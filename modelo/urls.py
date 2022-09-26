@@ -12,5 +12,5 @@ router.register('movimentacao', views.MovimentacoesViewSet, basename='movimentac
 router.register('emprestimo', views.EmprestimoViewSet, basename='emprestimo')
 router.register('pagamento', views.PagamentoEmprestimosViewSet, basename='pagamento')
 router.register('extrato', views.ExtratoViewSet, basename='extrato')
-router.register('imagens', views.ImagemViewSet, basename='imagens')
+# router.register('imagens', views.ImagemViewSet, basename='imagens')
 urlpatterns = router.urls

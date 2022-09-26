@@ -18,6 +18,7 @@ class Cliente(models.Model):
     login = models.CharField(max_length=255)
     foto = models.ImageField()
     data_cadastro = models.DateField()
+    foto = models.ImageField(upload_to='modelo/cliente')
 
 class Conta(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
@@ -79,9 +80,9 @@ class Extrato(models.Model):
     movimentacao = models.ForeignKey(Movimentacoes, on_delete=models.PROTECT)
 
 
-class Imagens(models.Model):
-    titulo = models.CharField(max_length=255)
-    foto = models.ImageField(upload_to='modelo/imagens')
-    def __str__(self):
-        return self.titulo
+# class Imagens(models.Model):
+#     titulo = models.CharField(max_length=255)
+    
+#     def __str__(self):
+#         return self.titulo
 
