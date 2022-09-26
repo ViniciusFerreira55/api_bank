@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 import email
 from msilib.schema import Class
 from operator import mod
@@ -76,4 +77,9 @@ class PagamentoEmprestimos(models.Model):
 class Extrato(models.Model):
     emprestimo = models.ForeignKey(Emprestimo, on_delete=models.PROTECT)
     movimentacao = models.ForeignKey(Movimentacoes, on_delete=models.PROTECT)
+
+
+class Imagens(models.Model):
+    titulo = models.CharField(max_length=255)
+    foto = models.ImageField(upload_to='')
 
