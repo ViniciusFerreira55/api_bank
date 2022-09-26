@@ -2,8 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Cliente, Conta, Cartao, Movimentacoes, Emprestimo, PagamentoEmprestimos, Extrato
-from .serializer import ClienteSerializer, ContaSerializer, CartaoSerializer, MovimentacoesSerializer, EmprestimoSerializer, PagamentoEmprestimosSerializer, ExtratoSerializer
+from .models import Cliente, Conta, Cartao, Imagens, Movimentacoes, Emprestimo, PagamentoEmprestimos, Extrato
+from .serializer import ClienteSerializer, ContaSerializer, CartaoSerializer, ImagensSerializer, MovimentacoesSerializer, EmprestimoSerializer, PagamentoEmprestimosSerializer, ExtratoSerializer
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
@@ -38,3 +38,7 @@ class PagamentoEmprestimosViewSet(viewsets.ModelViewSet):
 class ExtratoViewSet(viewsets.ModelViewSet):
     queryset = Extrato.objects.all()
     serializer_class = ExtratoSerializer
+
+class ImagemViewSet(viewsets.ModelViewSet):
+    queryset = Imagens.objects.all()
+    serializer_class = ImagensSerializer

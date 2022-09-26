@@ -1,3 +1,4 @@
+from dataclasses import field
 from decimal import Decimal
 from pyexpat import model
 from select import select
@@ -5,7 +6,7 @@ from unicodedata import decimal
 from unittest.util import _MAX_LENGTH
 from rest_framework import serializers
 
-from modelo.models import Cliente, Conta, Cartao, Movimentacoes, Emprestimo, PagamentoEmprestimos, Extrato
+from modelo.models import Cliente, Conta, Cartao, Imagens, Movimentacoes, Emprestimo, PagamentoEmprestimos, Extrato
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,7 +17,7 @@ class ClienteSerializer(serializers.ModelSerializer):
 class ContaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conta
-        fields = ['id', 'cliete', 'numeroConta', 'agencia', 'tipo', 'saldo']
+        fields = ['id', 'cliente', 'numeroConta', 'agencia', 'tipo', 'saldo']
 
 
 class CartaoSerializer(serializers.ModelSerializer):
@@ -28,7 +29,7 @@ class CartaoSerializer(serializers.ModelSerializer):
 class MovimentacoesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movimentacoes
-        fields = ['id', 'data_movimentacao', 'oprecoes', 'valor', 'contaDebitada', 'contaCreditada']
+        fields = ['id', 'data_movimentacao', 'operacoes', 'valor', 'contaDebitada', 'contaCreditada']
 
 
 class EmprestimoSerializer(serializers.ModelSerializer):
@@ -40,10 +41,16 @@ class EmprestimoSerializer(serializers.ModelSerializer):
 class PagamentoEmprestimosSerializer(serializers.ModelSerializer):
     class Meta:
         model = PagamentoEmprestimos
-        fields = ['id', 'emprestimos', 'valor', 'data_pagamento']
+        fields = ['id', 'emprestimo', 'valor', 'data_pagamento']
 
 
 class ExtratoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Extrato
         fields = ['id', 'emprestimo', 'movimentacao']
+
+    
+class ImagensSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Imagens
+        fields = ['id', 'titulo', 'foto']

@@ -1,3 +1,6 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+class imagens_display(admin.ModelAdmin):
+    list_display = ('id', 'titulo')
+admin.site.register(models.Imagens)

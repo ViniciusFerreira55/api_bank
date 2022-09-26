@@ -48,7 +48,7 @@ class Cartao(models.Model):
     cvv = models.CharField(max_length=4)
     bandeira = models.CharField(max_length=25)
     bloqueado = models.BooleanField(default=False)
-    tipoCartão = models.CharField(max_length=1, choices=TIPO_CARTAO, default=DEBITO)
+    tipoCartao = models.CharField(max_length=1, choices=TIPO_CARTAO, default=DEBITO)
 
 class Movimentacoes(models.Model):
     data_movimentacao = models.DateField()
@@ -81,5 +81,7 @@ class Extrato(models.Model):
 
 class Imagens(models.Model):
     titulo = models.CharField(max_length=255)
-    foto = models.ImageField(upload_to='')
+    foto = models.ImageField(upload_to='modelo/imagens')
+    def __str__(self):
+        return self.titulo
 
