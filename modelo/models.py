@@ -8,6 +8,7 @@ from tkinter import CASCADE
 from wsgiref.validate import validator
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from pictures.models import PictureField
 
 # Create your models here.
 class Cliente(models.Model):
@@ -16,9 +17,8 @@ class Cliente(models.Model):
     data_nascimento = models.DateField()
     email = models.EmailField(unique=True)
     login = models.CharField(max_length=255)
-    foto = models.ImageField()
+    foto = PictureField(upload_to='modelo/imagens')
     data_cadastro = models.DateField()
-    foto = models.ImageField(upload_to='modelo/cliente')
 
 class Conta(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)

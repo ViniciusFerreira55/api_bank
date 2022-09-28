@@ -5,13 +5,14 @@ from select import select
 from unicodedata import decimal
 from unittest.util import _MAX_LENGTH
 from rest_framework import serializers
-
+from pictures.contrib.rest_framework import PictureField
 from modelo.models import Cliente, Conta, Cartao, Movimentacoes, Emprestimo, PagamentoEmprestimos, Extrato
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields = ['id', 'nome', 'cpf', 'data_nascimento', 'email', 'login', 'foto', 'data_cadastro', 'foto']
+        fields = ['id', 'nome', 'cpf', 'data_nascimento', 'email', 'login', 'foto', 'data_cadastro']
+    foto = PictureField()
 
 
 class ContaSerializer(serializers.ModelSerializer):
