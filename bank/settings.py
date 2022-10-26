@@ -30,7 +30,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://bankwilsontmj.azurewebsites.net'
+    'https://zimbas2.azurewebsites.net'
 ]
 
 # Application definition
