@@ -15,9 +15,8 @@ class Cliente(models.Model):
     cpf = models.CharField(max_length=11)
     data_nascimento = models.DateField()
     email = models.EmailField(unique=True)
-    login = models.CharField(max_length=255)
-    foto = models.ImageField()
     data_cadastro = models.DateField()
+    password = models.CharField(max_length=255)
     foto = models.ImageField(upload_to='modelo/cliente')
 
 class Conta(models.Model):
