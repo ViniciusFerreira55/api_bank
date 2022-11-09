@@ -11,7 +11,7 @@ from modelo.models import Cliente, Conta, Cartao, Movimentacoes, Emprestimo, Pag
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
-        fields = ['id', 'nome', 'cpf', 'data_nascimento', 'email', 'login', 'foto', 'data_cadastro', 'foto']
+        fields = ['id', 'nome', 'cpf', 'data_nascimento', 'email', 'password', 'foto', 'data_cadastro', 'foto']
 
 
 class ContaSerializer(serializers.ModelSerializer):
