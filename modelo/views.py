@@ -15,6 +15,10 @@ class ClienteViewSet(viewsets.ModelViewSet):
     queryset = Cliente.objects.all()
     serializer_class = ClienteSerializer
 
+    def create(self, request, *args, **kwargs):
+        print(self.request.data)
+        return super().create(request, *args, **kwargs)
+
 class ContaViewSet(viewsets.ModelViewSet):
     queryset = Conta.objects.all()
     serializer_class = ContaSerializer

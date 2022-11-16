@@ -8,19 +8,20 @@ from tkinter import CASCADE
 from wsgiref.validate import validator
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
-
+import random
 # Create your models here.
 class Cliente(models.Model):
     nome = models.CharField(max_length=255)
-    cpf = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=11, unique=True)
     data_nascimento = models.DateField()
     email = models.EmailField(unique=True)
     data_cadastro = models.DateField(auto_now=True)
     password = models.CharField(max_length=255)
-    foto = models.ImageField(upload_to='modelo/cliente')
+    # foto = models.ImageField(upload_to='modelo/cliente')
 
 class Conta(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
+    # numero = random.random()
     numeroConta = models.CharField(max_length=50)
     agencia = models.CharField(max_length=50)
     CORRENTE = 'C'
