@@ -52,12 +52,23 @@ class LoginViewSet(viewsets.ModelViewSet):
     
     def create(self, request, *args, **kwargs):
         listaClientes = Cliente.objects.all()
+        encontrou = False
         for c in listaClientes:
             if self.request.data['cpf'] == c.cpf and self.request.data['password'] == c.password:
-                return Response(status=status.HTTP_200_OK)
-            else:
-                return Response(status=status.HTTP_401_UNAUTHORIZED)
-                
+                cliente = {
+                    'nome': c.nome,
+                    'cpf': c.cpf,
+                    'data_nascimento': c.data_nascimento,
+                    'email': c.email,
+                    'data_cadastro': c.data_cadastro,
+                    'password': c.password
+                }
+                encontrou = True
+                return Response({ 'cliente': cliente },status=status.HTTP_200_OK)
+            # else:
+              
+        if not encontrou:
+              return Response({ 'cliente': None } ,status=status.HTTP_200_OK)                
         # return super().create(request, *args, **kwargs)
 # class ImagemViewSet(viewsets.ModelViewSet):
 #     queryset = Imagens.objects.all()

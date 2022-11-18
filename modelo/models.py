@@ -22,8 +22,8 @@ class Cliente(models.Model):
 class Conta(models.Model):
     cliente = models.ForeignKey(Cliente, on_delete=models.PROTECT)
     # numero = random.random()
-    numeroConta = models.CharField(max_length=50)
-    agencia = models.CharField(max_length=50)
+    numeroConta = models.CharField(max_length=50, unique=True)
+    agencia = models.CharField(max_length=50, unique=True)
     CORRENTE = 'C'
     POUPANCA = 'P'
 
@@ -32,7 +32,7 @@ class Conta(models.Model):
         (POUPANCA, 'Poupança')
     ]
     tipo = models.CharField(max_length=1, choices=TIPOS_CONTA, default=CORRENTE)
-    saldo = models.DecimalField(max_digits=9, decimal_places=2)
+    saldo = models.DecimalField(max_digits=9, decimal_places=2, unique=True)
 
 class Cartao(models.Model):
     DEBITO = 'D'
