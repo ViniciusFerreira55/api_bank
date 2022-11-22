@@ -23,6 +23,21 @@ class ContaSerializer(serializers.ModelSerializer):
         model = Conta
         fields = ['id', 'cliente', 'numeroConta', 'agencia', 'tipo', 'saldo']
 
+class CreateContaSerializer(serializers.ModelSerializer):
+    cliente = ClienteSerializer()
+    class Meta:
+        model = Conta
+        fields = '__all__'
+    
+    def create(self, validated_data):
+        cliente_dict = validated_data.pop('cliente')
+
+        cliente = Cliente.objects.create(**cliente_dict)
+        conta_instance = Conta.objects.create(
+            cliente=cliente, **validated_data
+        )
+        return conta_instance
+
 
 class CartaoSerializer(serializers.ModelSerializer):
     class Meta:
