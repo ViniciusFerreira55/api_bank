@@ -58,21 +58,32 @@ class LoginViewSet(viewsets.ModelViewSet):
         listaClientes = Cliente.objects.all()
         encontrou = False
         for c in listaClientes:
+
             if self.request.data['cpf'] == c.cpf and self.request.data['password'] == c.password:
-                cliente = {
-                    'nome': c.nome,
-                    'cpf': c.cpf,
-                    'data_nascimento': c.data_nascimento,
-                    'email': c.email,
-                    'data_cadastro': c.data_cadastro,
-                    'password': c.password
+                
+                _conta = Conta.objects.get(cliente=c)
+                cli = _conta.cliente
+
+                conta = {
+                    'numeroConta': _conta.numeroConta,
+                    'agencia': _conta.agencia,
+                    'tipo': _conta.tipo,
+                    'saldo': _conta.saldo,
+                    'cliente': {
+                    'nome': cli.nome,
+                    'cpf': cli.cpf,
+                    'data_nascimento': cli.data_nascimento,
+                    'email': cli.email,
+                    'data_cadastro': cli.data_cadastro,
+                    'password': cli.password
+                    }
                 }
                 encontrou = True
-                return Response({ 'cliente': cliente },status=status.HTTP_200_OK)
+                return Response({ 'conta': conta },status=status.HTTP_200_OK)
             # else:
               
         if not encontrou:
-              return Response({ 'cliente': None } ,status=status.HTTP_200_OK)                
+              return Response({ 'conta': None } ,status=status.HTTP_200_OK)                
         # return super().create(request, *args, **kwargs)
 # class ImagemViewSet(viewsets.ModelViewSet):
 #     queryset = Imagens.objects.all()
