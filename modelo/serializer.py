@@ -21,7 +21,7 @@ class Loginserializer(serializers.ModelSerializer):
 class ContaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conta
-        fields = ['id', 'cliente', 'numeroConta', 'agencia', 'tipo', 'saldo', "numeroCartao", "validade", 'cvv']
+        fields = ['id', 'cliente', 'numeroConta', 'agencia', 'tipo', 'saldo', "numeroCartao", "validade", 'cvv', 'cardImage']
 
 class CreateContaSerializer(serializers.ModelSerializer):
     cliente = ClienteSerializer()

@@ -36,6 +36,7 @@ class Conta(models.Model):
     numeroCartao = models.CharField(max_length=25)
     validade = models.CharField(max_length=5)
     cvv = models.CharField(max_length=4)
+    cardImage = models.CharField(max_length=1, default=1)
 
 class Movimentacoes(models.Model):
     data_movimentacao = models.DateField()

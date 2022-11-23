@@ -65,6 +65,10 @@ class LoginViewSet(viewsets.ModelViewSet):
                     'agencia': _conta.agencia,
                     'tipo': _conta.tipo,
                     'saldo': _conta.saldo,
+                    'numeroCartao': _conta.numeroCartao,
+                    'validade': _conta.validade,
+                    'cvv': _conta.cvv,
+                    'cardImage': _conta.cardImage,
                     'cliente': {
                     'nome': cli.nome,
                     'cpf': cli.cpf,
