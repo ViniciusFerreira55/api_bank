@@ -2,8 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import Cliente, Conta, Cartao, Movimentacoes, Emprestimo, PagamentoEmprestimos, Extrato
-from .serializer import ClienteSerializer, ContaSerializer, CreateContaSerializer, CartaoSerializer, MovimentacoesSerializer, EmprestimoSerializer, PagamentoEmprestimosSerializer, ExtratoSerializer, Loginserializer
+from .models import Cliente, Conta, Movimentacoes, Emprestimo, PagamentoEmprestimos, Extrato
+from .serializer import ClienteSerializer, ContaSerializer, CreateContaSerializer, MovimentacoesSerializer, EmprestimoSerializer, PagamentoEmprestimosSerializer, ExtratoSerializer, Loginserializer
 from rest_framework import status
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
@@ -26,10 +26,6 @@ class ContaViewSet(viewsets.ModelViewSet):
         if self.request.method == 'POST':
             return CreateContaSerializer
         return ContaSerializer
-
-class CartaoViewSet(viewsets.ModelViewSet):
-    queryset = Cartao.objects.all()
-    serializer_class = CartaoSerializer
 
 class MovimentacoesViewSet(viewsets.ModelViewSet):
     queryset = Movimentacoes.objects.all()

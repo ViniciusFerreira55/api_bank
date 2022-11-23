@@ -32,24 +32,10 @@ class Conta(models.Model):
         (POUPANCA, 'Poupança')
     ]
     tipo = models.CharField(max_length=1, choices=TIPOS_CONTA, default=CORRENTE)
-    saldo = models.DecimalField(max_digits=9, decimal_places=2, unique=True)
-
-class Cartao(models.Model):
-    DEBITO = 'D'
-    CREDITO = 'C'
-
-    TIPO_CARTAO = [
-        (DEBITO, 'Debito'),
-        (CREDITO, 'Credito')
-    ]
-
-    conta = models.ForeignKey(Conta, on_delete=models.PROTECT)
+    saldo = models.DecimalField(max_digits=9, decimal_places=2)
     numeroCartao = models.CharField(max_length=25)
-    validade = models.DateField()
+    validade = models.CharField(max_length=5)
     cvv = models.CharField(max_length=4)
-    bandeira = models.CharField(max_length=25)
-    bloqueado = models.BooleanField(default=False)
-    tipoCartao = models.CharField(max_length=1, choices=TIPO_CARTAO, default=DEBITO)
 
 class Movimentacoes(models.Model):
     data_movimentacao = models.DateField()

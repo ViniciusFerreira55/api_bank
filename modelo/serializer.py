@@ -6,7 +6,7 @@ from unicodedata import decimal
 from unittest.util import _MAX_LENGTH
 from rest_framework import serializers
 
-from modelo.models import Cliente, Conta, Cartao, Movimentacoes, Emprestimo, PagamentoEmprestimos, Extrato
+from modelo.models import Cliente, Conta, Movimentacoes, Emprestimo, PagamentoEmprestimos, Extrato
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -21,7 +21,7 @@ class Loginserializer(serializers.ModelSerializer):
 class ContaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Conta
-        fields = ['id', 'cliente', 'numeroConta', 'agencia', 'tipo', 'saldo']
+        fields = ['id', 'cliente', 'numeroConta', 'agencia', 'tipo', 'saldo', "numeroCartao", "validade", 'cvv']
 
 class CreateContaSerializer(serializers.ModelSerializer):
     cliente = ClienteSerializer()
@@ -38,11 +38,6 @@ class CreateContaSerializer(serializers.ModelSerializer):
         )
         return conta_instance
 
-
-class CartaoSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Cartao
-        fields = ['id', 'conta', 'numeroCartao', 'validade', 'cvv', 'bandeira', 'bloqueado', 'tipoCartao']
 
 
 class MovimentacoesSerializer(serializers.ModelSerializer):
