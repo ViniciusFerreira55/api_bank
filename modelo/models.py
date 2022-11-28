@@ -39,7 +39,7 @@ class Conta(models.Model):
     cardImage = models.CharField(max_length=1, default=1)
 
 class Movimentacoes(models.Model):
-    data_movimentacao = models.DateField()
+    data_movimentacao = models.DateField(auto_now=True)
     operacoes = models.CharField(max_length=45)
     valor = models.DecimalField(max_digits=9, decimal_places=2)
     contaDebitada = models.ForeignKey(Conta, on_delete=models.PROTECT, related_name='contaDebitada')
