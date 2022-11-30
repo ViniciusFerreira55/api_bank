@@ -1,0 +1,15 @@
+
+Coloque na Branch de nome  "Final"
+Siga os seguintes comandos no terminal:
+deactivate  ("Só por garantia  :) ")
+py -m venv env
+cd env
+cd scripts
+.\activate
+cd ..
+cd ..
+pip install -r .\requirements.txt
+py .\manage.py runserver
+
+
+E pronto :)
